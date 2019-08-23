@@ -1,0 +1,23 @@
+<launch>
+	<node pkg="tf2_ros" type="static_transform_publisher" name="kinect_broadcaster" args="0 0 1 0.5 0.5 0.5 0.5 world kinect_frame" />
+
+	
+	<node pkg="tf2_ros" type="static_transform_publisher" name="left_hand_broadcaster" args="-0.03 0 0 0 0 0 1 kinect/human/left_wrist kinect/human/left_hand" />
+
+	<node pkg="tf2_ros" type="static_transform_publisher" name="right_hand_broadcaster" args="-0.03 0 0 0 0 0 1 kinect/human/right_wrist kinect/human/right_hand" />
+
+
+	<node pkg="tf2_ros" type="static_transform_publisher" name="left_foot_broadcaster" args="0 -0.01 -0.08 0 0 0 1 kinect/human/left_ankle kinect/human/left_foot" />
+
+	<node pkg="tf2_ros" type="static_transform_publisher" name="right_foot_broadcaster" args="0 -0.01 -0.08 0 0 0 1 kinect/human/right_ankle kinect/human/right_foot" />
+	
+	<node pkg="human_tf_pub" type="human_tf_pub_node" name="human_tf_publisher_node"/>
+
+	<node pkg="nuitrack_body_tracker" type="nuitrack_body_tracker_node" name="nuitrack_body_tracker_node" output="screen">
+      
+    <param name="camera_depth_frame" value="nuitrack_camera_link"/>
+    <param name="camera_color_frame" value="nuitrack_camera_link"/> 
+ 
+  	</node>
+
+</launch>
